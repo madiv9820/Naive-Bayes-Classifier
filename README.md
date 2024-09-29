@@ -131,7 +131,37 @@ __Parameters:__
 __Returns:__ The accuracy of the model as a float.
 
 __Description:__ This method evaluates the model by comparing predicted labels to true labels.
-<hr>
+
+## Usage
+
+```
+from sklearn.model_selection import train_test_split
+from naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+
+# Example data
+X = np.array([[1, 2], [1, 4], [1, 0],
+              [2, 2], [2, 4], [2, 0]])
+y = np.array([0, 0, 0, 1, 1, 1])  # Class labels
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train the model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy:.2f}')
+```
+
+# Conclusion
+
+Naive Bayes classifiers are simple yet powerful tools for classification tasks. They work exceptionally well with large datasets and provide a good baseline for many machine learning problems.
 
 # Contributing
 
